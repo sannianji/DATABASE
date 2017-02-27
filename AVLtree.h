@@ -4,9 +4,9 @@ template<typename Element>
 struct AVLNode
 {
 	//class functions
-	AVLNode(Element el(),AVLNode* lf=nullptr,AVLNode* rt=nullptr,int ht=0)
+	AVLNode(const Element & el(),AVLNode* lf=nullptr,AVLNode* rt=nullptr,int ht=0)
 	:LeftNode(lf),RightNode(rt),hight(0),Element(el){}
-	
+
 	//data
 	AVLNode* LeftNode;
 	AVLNode* RightNode;
@@ -16,7 +16,6 @@ struct AVLNode
 	//interface functions
 	int hightreturn(AVLNode* t)
 		{return (t==nullptr)?-1:t->hight;}		
-	
 };
 template<typename Element>
 class AVLTree
@@ -24,7 +23,7 @@ class AVLTree
 public:
 	//class functions
 	AVLTree();
-	AVLTree(AVLTree&);
+	AVLTree(const AVLTree &);
 	~AVLTree();
 
 	//interface functions for information
@@ -43,7 +42,5 @@ private:
 	//data
 	AVLNode<Element>* Root;
 	int AVLTreehight;
-
-	
 };
 #endif
