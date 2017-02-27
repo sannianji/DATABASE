@@ -4,7 +4,7 @@ template<typename Element>
 struct AVLNode
 {
 	//class functions
-	AVLNode(const Element & el(),AVLNode* lf=nullptr,AVLNode* rt=nullptr,int ht=0)
+	AVLNode(const Element & el,AVLNode* lf=nullptr,AVLNode* rt=nullptr,int ht=0)
 	:LeftNode(lf),RightNode(rt),hight(0),Element(el){}
 
 	//data
