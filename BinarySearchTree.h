@@ -18,7 +18,11 @@ class BinarySearchTree
 public:
 	//三大函数
 	BinarySearchTree():root(nullptr){}
+<<<<<<< HEAD
 	BinarySearchTree(const BinarySearchTree & rhs){*this=rhs;}
+=======
+	BinarySearchTree(const BinarySearchTree&rhs) { *this = rhs; }
+>>>>>>> 5cf173912aeaa774128935bb34ae916c1e7b1d66
 	~BinarySearchTree();
 public:
 	//接口只读函数
