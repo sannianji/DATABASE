@@ -14,7 +14,7 @@ struct AVLNode
 	Element Elements;
 	
 	//interface functions
-	int hightreturn(AVLNode* t)
+	int hightReturn(AVLNode* t)
 		{return (t==nullptr)?-1:t->hight;}		
 };
 template<typename Element>
@@ -29,7 +29,7 @@ public:
 	//interface functions for information
 	const Element& findMin()const;
 	const Element& findMax()const;
-	const int hightMax()const;
+	const int hightMax()const{return (root->heightReturn()==-1)?0:(root->heightReturn());};
 	std::ostream& print()const;
 	bool contains(const Element & )const;
 
@@ -40,7 +40,15 @@ public:
 	
 private:
 	//data
-	AVLNode<Element>* Root;
+	AVLNode<Element>* root;
 	int AVLTreehight;
+	//function
+	const AVLNode<Element>* findMin(const AVLNode<Element>*) const;
+	const AVLNode<Element>* findMax(const AVLNode<Element>*) const;
+	bool contains(const Element &,const AVLNode<Element>*) const;
+	
+	bool insert(const Element &, const AVLNode<Element>*&);
+	bool remove(const Element &, const AVLNode<Element>*&);
+	void clear(AVLNode<Element>*&);	
 };
 #endif
