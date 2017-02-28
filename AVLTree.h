@@ -33,7 +33,7 @@ class AVLTree
     const Element &findMin() const;
     const Element &findMax() const;
     const int hightMax() const { return (root->heightReturn() == -1) ? 0 : (root->heightReturn()); };
-    std::ostream &print() const;
+    std::ostream &print(std::ostream&) const;
     bool contains(const Element &) const;
 
     //interface functions can change the class
@@ -50,7 +50,7 @@ class AVLTree
     const AVLNode<Element> *findMin(const AVLNode<Element> *) const;
     const AVLNode<Element> *findMax(const AVLNode<Element> *) const;
     bool contains(const Element &, const AVLNode<Element> *) const;
-
+	std::ostream& print(std::ostream&, const AVLNode<Element>&)const;
     bool insert(const Element &, const AVLNode<Element> *&);
     bool remove(const Element &, const AVLNode<Element> *&);
     void clear(AVLNode<Element> *&);
