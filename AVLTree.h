@@ -39,8 +39,13 @@ public:
 	void clear();	
 	
 private:
+<<<<<<< HEAD
 	//data
 	AVLNode<Element>* root;
+=======
+
+	AVLNode<Element>* Root;
+>>>>>>> testing
 	int AVLTreehight;
 	//function
 	const AVLNode<Element>* findMin(const AVLNode<Element>*) const;
