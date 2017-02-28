@@ -39,7 +39,7 @@ public:
 	void clear();	
 	
 private:
-	//data
+
 	AVLNode<Element>* Root;
 	int AVLTreehight;
 };
