@@ -6,24 +6,27 @@ struct AVLNode
 {
     //class functions
     AVLNode(const Element &el, AVLNode *lf = nullptr, AVLNode *rt = nullptr, int ht = 0)
-	: LeftNode(lf), RightNode(rt), hight(0), Element(el) {}
+	: LeftNode(lf), RightNode(rt), height(0), Element(el) {}
 
     //data
     AVLNode *LeftNode;
     AVLNode *RightNode;
-    int hight;
+    int height;
     Element Elements;
 
     //interface functions
-    int hightReturn(AVLNode *t)
-    {
-	return (t == nullptr) ? -1 : t->hight;
-    }
+    
 };
+template<typename Element>
+int heightReturn(AVLNode<Element> *t)
+{
+	return (t == nullptr) ? -1 : t->height;
+}
 template <typename Element>
 class AVLTree
 {
   public:
+
     //class functions
     AVLTree();
     AVLTree(const AVLTree &);
@@ -32,7 +35,7 @@ class AVLTree
     //interface functions for information
     const Element &findMin() const;
     const Element &findMax() const;
-    const int hightMax() const { return (root->heightReturn() == -1) ? 0 : (root->heightReturn()); };
+    const int heightMax() const { return (heightReturn(root) == -1) ? 0 : (heightReturn(root)); };
     std::ostream &print(std::ostream&) const;
     bool contains(const Element &) const;
 
@@ -45,7 +48,7 @@ class AVLTree
     //data
     AVLNode<Element> *root;
 
-    int AVLTreehight;
+    int AVLTreeheight;
     //function
     const AVLNode<Element> *findMin(const AVLNode<Element> *) const;
     const AVLNode<Element> *findMax(const AVLNode<Element> *) const;
