@@ -14,8 +14,8 @@ public:
 	bool contains(const HashedObj& x)const;
 
 	void makeEmpty();
-	void insert(const HashedObj&x);
-	void remove(const HashedObj&x);
+	void insert(const HashedObj&);
+	void remove(const HashedObj&);
 
 private:
 	std::vector<HashedObj> theLists;
@@ -63,7 +63,7 @@ void HashTable<HashedObj>::makeEmpty()
 		theLists[i].clear();
 }
 template<typename HashedObj>
-bool HashTable<HashedObj>::contains()const
+bool HashTable<HashedObj>::contains(const HashedObj&)const
 {
 	const std::list<HashedObj>& whichList = theLists[myhash(x)];
 	return find(whichList.begin(), whichList.end(), x) != whichList.end();
