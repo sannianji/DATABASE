@@ -1,6 +1,6 @@
 #pragma once
 #ifndef LEFTIST_HEAP_H
-#define LEFTISR_HEAP_H
+#define LEFTIST_HEAP_H
 template<typename Comparable>
 class LeftistHeap
 {
@@ -33,7 +33,7 @@ private:
 	};
 	LeftistNode * root;
 	LeftistNode * merge(LeftistNode * h1, LeftistNode * h2);
-	LeftistNode * mergel(LeftistNode * h1, LeftistNode * h2);
+	LeftistNode * merge1(LeftistNode * h1, LeftistNode * h2);
 
 	void swapChildren(LeftistNode * t);
 	void reclaimMemory(LeftistNode * t);
@@ -59,17 +59,38 @@ LeftistNode<Comparable> * LeftistHeap<Comparable>::merge(LeftistNode<Comparable>
 		return merge1(h2, h1);
 }
 template<typename Comparable>
-LeftistNode<Comparable> * LeftistHeap<Comparable>::merge1(LetistNode * h1, LeftistNode * h2)
+LeftistNode<Comparable> * LeftistHeap<Comparable>::merge1(LeftistNode<Comparable> * h1, LeftistNode<Comparable> * h2)
 {
 	if (h1->left = nullptr)
 		h1->left = h2;
 	else
 	{
-		(h1->right = merge(h1->right, h2));
+		h1->right = merge(h1->right, h2);
 		if (h1->left->npl < h1->right - npl)
 			swapChildren(h1);
 		h1->npl = h1->right->npl + 1;
 	}
 	return h1;
 }
+template<typename Comparable>
+void LeftistHeap<Comparable>::insert(const Comparable & x)
+{
+	root = merge(new LeftistNode<Comparable>(x), root);
+}
+template<typename Comparable>
+void LeftistHeap<Comparable>::deleteMin()
+{
+	if (isEmpty())
+		throw UnderflowException();
+	LeftistNode<Comparable> * oldRoot = root;
+	root = merge(root->left, root->right);
+	delete oldRoot;
+}
+template<typename Comparable>
+void deleteMin(Comparable & minItem)
+{
+	minItem = findMin();
+	deletMin();
+}
+
 #endif
