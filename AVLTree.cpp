@@ -171,4 +171,5 @@ void DoubleRotateWitheTheRightChild(AVLNode<Element>* & ptr)
 {
 	RotateWithTheRightChild(ptr->RightNode);
 	RotateWithTheLeftChild(ptr);
+	
 }
