@@ -41,7 +41,7 @@ private:
 	void * makeEmpty(LeftistNode<Comparable> * rhs);
 	
 	void swapChildren(LeftistNode<Comparable> * t);
-	void reclaimMemory(LeftistNode<Comparable> * t);
+	void reclaimMemory(LeftistNode<Comparable> * t);//haven't defined
 	LeftistNode<Comparable> * clone(LeftistNode<Comparable> *)const;
 };
 #endif
