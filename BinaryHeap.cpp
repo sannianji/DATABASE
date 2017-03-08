@@ -58,3 +58,21 @@ void BinaryHeap<Comparable>::buildHeap()
 	for (int i = currentSize / 2; i > 0; i--)
 		percolateDown(i);
 }
+template<typename Comparable>
+bool BinaryHeap<Comparable>::isEmpty() const
+{
+	return root == nullptr;
+}
+template<typename Comparable>
+const Comparable & BinaryHeap<Comparable>::findMin() const
+{
+	return arry[1];
+}
+template<typename Comparable>
+void BinaryHeap<Comparable>::makeEmpty()
+{
+	arry.clear();
+	delete arry;
+	arry = nullptr;
+	currentSize = 0;
+}
