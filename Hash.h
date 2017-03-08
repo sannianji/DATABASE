@@ -1,62 +1,5 @@
-#pragma once
-#ifndef HASH_H
-#define HASH_H
-#include<string>
-#include<vector>
-#include<list>
-#include<algorithm>
-template<typename HashedObj>
-class HashTable
-{
-public:
-	explicit HashTable(int size = 101);
 
-	bool contains(const HashedObj& x)const;
-
-	void makeEmpty();
-	void insert(const HashedObj&);
-	void remove(const HashedObj&);
-
-private:
-	std::vector<HashedObj> theLists;
-	int CurrentSize;
-
-	void rehash();
-	int myhash(const HashedObj& x)const;
-};
-int hash(const std::string &key);
-int hash(int key);
-template<typename HashedObj>
-int HashTable<HashedObj>::myhash(const HashedObj & x)const
-{
-	int hashVal = hash(x);
-	hashVal %= theLists.size();
-	if (hashVal < 0)
-		hashVal += theList.size();
-
-	return hashVal;
-}
-class Employee
-{
-public:
-	const std::string & getName() const
-	{
-		return name;
-	}
-	bool operator==(const Employee & rhs) const
-	{
-		return this->getName() == rhs.getName();
-	}
-	bool operator!=(const Employee & rhs)const
-	{
-		return !(this->getName() == rhs.getName());
-	}
-private:
-	std::string name;
-	double salary;
-	int seniority;
-};
-template<typename HashedObj>
+template<typename HashedObj> 
 void HashTable<HashedObj>::makeEmpty()
 {
 	for (int i = 0; i < theLists.size(); i++)
@@ -106,5 +49,3 @@ void HashTable<HashedObj>::rehash()
 			insert(*iter++);
 	}
 }
-
-#endif
