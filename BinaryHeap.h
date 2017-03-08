@@ -6,7 +6,7 @@ template<typename Comparable>
 class BinaryHeap
 {
 public:
-	explicit BinaryHeap(int capacity = 100);
+	explicit BinaryHeap(int capacity = 100) :arry(new std::vector<Comparable>(100)) {}
 	explicit BinaryHeap(const std::vector<Comparable> & item);
 
 	bool isEmpty() const;
