@@ -40,9 +40,9 @@ bool BinarySearchTree<Comparable>::contains(const Comparable & x, BinaryNode<Com
 {
 	if (t == nullptr)
 		return false;
-	else if (x<t->element)
+	else if (x < t->element)
 		return contains(x, t->left);
-	else if (x>t->element)
+	else if (x > t->element)
 		return contains(x, t->right);
 	else
 		return true;
@@ -52,7 +52,7 @@ void BinarySearchTree<Comparable>::insert(const Comparable & x, BinaryNode<Compa
 {
 	if (t == nullptr)
 		t = new BinaryNode<Comparable>(x, nullptr, nullptr);
-	if (x>t->element)
+	if (x > t->element)
 		insert(x, t->right)
 	else if (x <= t->element)
 		insert(x, t->left)
@@ -125,4 +125,26 @@ BinaryNode<Comparable> *BinarySearchTree<Comparable>::clone(BinaryNode<Comparabl
 		return nullptr;
 	else
 		return new BinaryNode<Comparable>(t->element, clone(t->left), clone(t->right));
+}
+template<typename Comparable>
+bool BinarySearchTree<Comparable>::isEmpty() const
+{
+	return root == nullptr;
+}
+template<typename Comparable>
+void BinarySearchTree<Comparable>::printTree(std::ostream & out)const
+{
+	if (root == nullptr)
+		out << "Empty tree" << endl;
+	printTree(root);
+}
+template<typename Comparable>
+void BinarySearchTree<Comparable>::printTree(BinaryNode<Comparable> * t,std::ostream & out)const
+{
+	if (t != nullptr)
+	{
+		printTree(t->left, out);
+		out << t->element << endl;
+		printTree(t->right, out);
+	}
 }
