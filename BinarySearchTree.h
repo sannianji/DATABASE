@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BINARY_SEARCH_TREE_H
 #define BINARY_SEARCH_TREE_H
+#include<iostream>
 //重点利用递归解决问题，注意模板的使用过程中对于typename的添加，切记
 //节点
 template<typename Comparable>
@@ -26,7 +27,7 @@ public:
 	const Comparable& findMax() const;
 	bool contains(const Comparable & x)const;
 	bool isEmpty()const;
-	void printTree()const;
+	void printTree(std::ostream & out)const;
 	//接口读写函数
 	void makeEmpty();
 	void insert(const Comparable & x);
@@ -46,7 +47,7 @@ private:
 	BinaryNode<Comparable> * findMax(BinaryNode<Comparable> * t)const;
 	bool contains(const Comparable & x, BinaryNode<Comparable> * t)const;
 	void makeEmpty(BinaryNode<Comparable> * & t);
-	void printTree(BinaryNode<Comparable> * t) const;
+	void printTree(BinaryNode<Comparable> * t,std::ostream & out) const;
 	BinaryNode<Comparable> * clone(BinaryNode<Comparable> * t);
 };
 #endif
