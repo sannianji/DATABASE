@@ -146,7 +146,6 @@ private:
 	Node* head;
 	Node* tail;
 	int theSize;
-
 	void init()
 	{
 		theSize = 0;
