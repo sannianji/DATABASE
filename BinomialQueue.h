@@ -1,6 +1,17 @@
 #pragma once
 #ifndef BINOMIAL_QUEUE_H
 #define BINOMIAL_QUEUE_H
+#include<vector>
+template<typename Comparable>
+struct BinomialNode
+{
+	Comparable Element;
+	BinomialNode * leftChild;
+	BinomialNode * nextSibling;
+
+	BinomialNode(const Comparable & theElement, BinomialNode *lt, BinomialNode *rt)
+		:element(theElement), leftChild(lt), nextSibling(rt) {}
+};
 template<typename Comparable>
 class BinomialQueue
 {
@@ -23,25 +34,15 @@ public:
 	const BinomialQueue & operator=(const BinomialQueue & rhs);
 
 private:
-	struct BinomialNode
-	{
-		Comparable Element;
-		BinomialNode * leftChild;
-		BinomialNode * nextSibling;
-
-		BinomialNode(const Comparable & theElement, BinomialNode *lt, BinomialNode *rt)
-			:element(theElement), leftChild(lt), nextSibling(rt) {}
-	};
-
 	enum { DEFAULT_TREES = 1 };
-
+	//data
 	int currentSize;
-	vector<BinomialNode *> theTrees;
-
+	std::vector<BinomialNode<Comparable> *> theTrees;//所有二项队列的根节点的指针的集合
+	//function
 	int findMinIndex()const;
 	int capacity() const;
-	BinomialNode* combineTrees(BinomialNode * t1, BinomialNode * t2);
-	void makeEmpty(BinomialNode * & t);
-	BinomialNode * clone(BinomialNode * t)const;
+	BinomialNode<Comparable>* combineTrees(BinomialNode<Comparable> * t1, BinomialNode<Comparable> * t2);
+	void makeEmpty(BinomialNode<Comparable> * & t);
+	BinomialNode<Comparable> * clone(BinomialNode<Comparable> * t)const;
 };
 #endif
