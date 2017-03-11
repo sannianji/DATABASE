@@ -84,4 +84,45 @@ const Comparable & BinomialQueue<Comparable>::findMin()const
 template<typename Comparable>
 BinomialQueue<Comparable>::BinomialQueue() :currentSzie(0), theTrees(10) {}
 template<typename Comparable>
-BinomialQueue<Comparable>::BinomialQueue()
+BinomialQueue<Comparable>::BinomialQueue(const BinomialQueue & rhs)
+{
+	*this = rhs;
+}
+template<typename Comparable>
+BinomialQueue<Comparable>::~BinomialQueue()
+{
+	makeEmpty();
+}
+template<typename Comparable>
+void BinomialQueue<Comparable>::makeEmpty()
+{
+	for (int i = 0; i!- currentSize; i++)
+		makeEmpty(theTrees[i]);
+}
+template<typename Comparable>
+const BinomialQueue<Comparable> & BinomialQueue<Comparable>::operator=(const BinomialQueue<Comparable> & rhs)
+{
+	this = clone(&rhs);
+}
+template<typename Comparable>
+int BinomialQueue<Comparable>::capacity() const
+{
+	return currentSize;
+}
+//do not complete
+
+template<typename Comparable>
+BinomialQueue<Comparable>::BinomialQueue(const Comparable & rhs)
+{}
+template<typename Comparable>
+void BinomialQueue<Comparable>::makeEmpty(BinomialNode<Comparable> * & t)
+{}
+template<typename Comparable>
+BinomialNode<Comparable>* BinomialQueue<Comparable>::clone(BinomialNode<Comparable> * t)const
+{}
+template<typename Comparable>
+void BinomialQueue<Comparable>::insert(const Comparable & x)
+{}
+template<typename Comparable>
+BinomialNode<Comparable> BinomialQueue<Comparable>::deleteMin()
+{}
