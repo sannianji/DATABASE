@@ -25,9 +25,8 @@ public:
 	const Comparable & findMin() const;
 
 	void insert(const Comparable & x);
-	void deleteMin();
-	void deleteMin(Comparable & minItem);
-
+	BinomialNode<Comparable> deleteMin();
+	
 	void makeEmpty();
 	void merge(BinomialQueue & rhs);
 
