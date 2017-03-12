@@ -2,6 +2,7 @@
 #ifndef SORT_H
 #define SORT_H
 #include<vector>
+//直接插入
 template<typename Comparable>
 void insertionSort(std::vector<Comparable> & vec)
 {
@@ -19,10 +20,12 @@ void insertionSort(std::vector<Comparable>::iterator & from, std::vector<Compara
 {
 	auto b = a;
 	for (auto a = from; a != to; ++a)
-		Comparable item = &a;
-	for (; b != from&&temp < *b; b--)
-		*b = *(b - 1);
-	*b = temp;
+	{
+		Comparable item = a;
+		for (; b != from&&temp < *b; b--)
+			*b = *(b - 1);
+		*b = temp;
+	}
 }
 template<typename Iterator>
 void insertionSort(const Iterator & begin, const Iterator & end)
@@ -53,6 +56,7 @@ void insertionSort(const Iterator & begin, const Iterator & end, Comparator less
 		*j = temp;
 	}
 }
+//谢尔排序
 template<typename Comparable>
 void shellsort(std::vector<Comparable> & vec)
 {
@@ -67,7 +71,7 @@ void shellsort(std::vector<Comparable> & vec)
 			a[j] = temp;
 		}
 }
-
+//堆排序
 template<typename Comparable>
 void heapsort(std::vector<Comparable> & vec)
 {
@@ -79,12 +83,10 @@ void heapsort(std::vector<Comparable> & vec)
 		percDown(vec, 0, j);
 	}
 }
-
 inline int  leftChild(int i)
 {
 	return 2 * i + 1;
 }
-
 template<typename Comparable>
 void percDown(std::vector<Comparable> & vec, int i, int n)
 {
@@ -102,6 +104,7 @@ void percDown(std::vector<Comparable> & vec, int i, int n)
 	}
 	vec[i] = temp;
 }
+//归并排序
 template<typename Comparable>
 void mergeSort(std::vector<Comparable> & vec)
 {
@@ -136,10 +139,11 @@ void merge(std::vector<Comparable>& vec, std::vector<Comparable> & tempvec, int 
 
 	while (rightPose <= rightEnd)
 		tempvec[tempPos++] = vec[rightPos++];
-	
+
 	for (int i = 0; i < numElements; i++, rightEnd--)
 		vec[rightEnd] = tempvec[rightEnd];
 }
+//快排
 template<typename Comparable>
 void quicksort(std::vector < Comparable > & vec)
 {
@@ -153,7 +157,7 @@ const Comparable & median3(std::vector<Comparable>&vec, int left, int right)
 		swap(vec[left], vec[center]);
 	if (vec[right] < vec[left])
 		swap(vec[left], vec[right]);
-	if(vec[right]<vec[cenrer])
+	if (vec[right] < vec[cenrer])
 		swap(vec[center], vec[right]);
 
 	swap(vec[center, vec[right - 1]]);
@@ -184,5 +188,19 @@ void quicksort(std::vector<Comparable> & vec, int left, int right)
 	else
 		insertionSort(a, left, right);
 }
-
+//冒泡
+template<typename Comparable>
+void bublesort(std::vector<Comparable> & vec)
+{
+	for (auto i = vec.begin(); i != vec.end() - 1; i++)
+		for (auto j = i + 1; j != vec.end(); j++)
+		{
+			if (*i < *j)
+			{
+				temp = *i;
+				*i = *j;
+				*j = temp;
+			}
+		}
+}
 #endif
