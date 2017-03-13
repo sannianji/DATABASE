@@ -12,10 +12,7 @@ struct AVLNode
     AVLNode *LeftNode;
     AVLNode *RightNode;
     int height;
-    Element Elements;
-
-    //interface functions
-    
+    Element Elements; 
 };
 template<typename Element>
 int heightReturn(AVLNode<Element> *t)
